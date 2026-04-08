@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya Uphade — Portfolio</title>
+  <meta name="description" content="Aditya Uphade — Software Engineer & Product Thinker. Building fast, thoughtful digital products focused on clean interfaces and scalable systems." />
+  <meta property="og:title" content="Aditya Uphade — Portfolio" />
+  <meta property="og:description" content="Software engineer crafting fast, thoughtful products. Clean interfaces, scalable systems." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%23C8A96E'/><text x='50%' y='55%' dominant-baseline='central' text-anchor='middle' font-family='Georgia,serif' font-size='14' font-weight='700' fill='%23111'>AU</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-left">
+      <a class="nav-logo" href="#hero">AU</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav-right">
+      <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+      <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 12h18M3 6h18M3 18h18"/>
+        </svg>
+      </button>
+    </div>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section id="hero">
+      <div>
+        <p class="hero-role fade-in">Software Engineer · Product Thinker</p>
+        <h1 class="hero-name fade-in delay-1">Aditya<br>Uphade</h1>
+        <p class="hero-bio fade-in delay-2">
+          I build fast, thoughtful products — focused on clean interfaces, scalable systems, and experiences that feel inevitable.
+        </p>
+        <a class="hero-cta fade-in delay-3" href="/assets/resume.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M8 2v9M4 7l4 4 4-4M2 13h12"/>
+          </svg>
+          Download Resume
+        </a>
+      </div>
+
+      <div class="photo-wrap fade-in delay-2">
+        <!-- Replace with: <img class="hero-photo" src="/assets/photo.jpg" alt="Aditya Uphade"> -->
+        <div class="photo-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="12" cy="8" r="4"/>
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+          </svg>
+          Your Photo
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h2 class="section-label fade-in">About</h2>
+      <p class="about-text fade-in delay-1">
+        I'm a <strong>full-stack engineer</strong> with a passion for building products that solve real problems. I care deeply about <strong>developer experience, performance,</strong> and the details that make software feel polished. When I'm not coding, I'm exploring design systems, open-source tooling, and the intersection of engineering and product.
+      </p>
+
+      <div class="about-stats">
+        <div class="stat fade-in delay-1">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">Years experience</div>
+        </div>
+        <div class="stat fade-in delay-2">
+          <div class="stat-num">12</div>
+          <div class="stat-label">Projects shipped</div>
+        </div>
+        <div class="stat fade-in delay-3">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">Coffees consumed</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h2 class="section-label fade-in">Projects</h2>
+      <div class="projects-grid">
+
+        <a class="project-card project-featured fade-in" href="#" target="_blank" rel="noopener">
+          <div class="project-meta">
+            <span class="project-number">01 — Featured</span>
+            <h3 class="project-title">Project Alpha</h3>
+            <p class="project-desc">A real-time collaboration tool built for async-first teams. Reduced meeting overhead by 40% in pilot testing with 200+ users across distributed orgs.</p>
+          </div>
+          <div class="project-right">
+            <div class="project-tags">
+              <span class="tag">React</span>
+              <span class="tag">Node.js</span>
+              <span class="tag">WebSockets</span>
+              <span class="tag">Redis</span>
+            </div>
+            <span class="project-arrow">↗</span>
+          </div>
+        </a>
+
+        <a class="project-card fade-in delay-1" href="#" target="_blank" rel="noopener">
+          <span class="project-number">02</span>
+          <h3 class="project-title">DevFlow CLI</h3>
+          <p class="project-desc">A developer productivity CLI that automates repetitive workflows, saving 2+ hours per week per dev.</p>
+          <div class="project-tags">
+            <span class="tag">TypeScript</span>
+            <span class="tag">Rust</span>
+            <span class="tag">CLI</span>
+          </div>
+          <span class="project-arrow">↗</span>
+        </a>
+
+        <a class="project-card fade-in delay-2" href="#" target="_blank" rel="noopener">
+          <span class="project-number">03</span>
+          <h3 class="project-title">Datastax UI</h3>
+          <p class="project-desc">A data visualization dashboard for monitoring distributed systems — clarity for engineers at a glance.</p>
+          <div class="project-tags">
+            <span class="tag">Next.js</span>
+            <span class="tag">D3.js</span>
+            <span class="tag">PostgreSQL</span>
+          </div>
+          <span class="project-arrow">↗</span>
+        </a>
+
+        <a class="project-card fade-in delay-3" href="#" target="_blank" rel="noopener">
+          <span class="project-number">04</span>
+          <h3 class="project-title">OpenChain</h3>
+          <p class="project-desc">An open-source library for composable data pipelines. 800+ stars, used in production by 30+ companies.</p>
+          <div class="project-tags">
+            <span class="tag">Python</span>
+            <span class="tag">Open Source</span>
+          </div>
+          <span class="project-arrow">↗</span>
+        </a>
+
+        <a class="project-card project-more fade-in delay-4" href="https://github.com/" target="_blank" rel="noopener">
+          <span class="project-number">More work</span>
+          <h3 class="project-title">View all on GitHub →</h3>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <h2 class="section-label fade-in">Contact</h2>
+      <div class="contact-layout">
+
+        <div class="contact-info fade-in delay-1">
+          <h3>Let's build<br>something.</h3>
+          <p>Open to new opportunities, collaborations, and interesting conversations.</p>
+          <div class="contact-links">
+            <a class="contact-link" href="mailto:hello@aditya.dev">
+              <span class="contact-link-label">Email</span>
+              <span class="contact-link-value">hello@aditya.dev</span>
+            </a>
+            <a class="contact-link" href="https://linkedin.com/" target="_blank" rel="noopener">
+              <span class="contact-link-label">LinkedIn</span>
+              <span class="contact-link-value">/in/aditya-uphade</span>
+            </a>
+            <a class="contact-link" href="https://github.com/" target="_blank" rel="noopener">
+              <span class="contact-link-label">GitHub</span>
+              <span class="contact-link-value">@aditya-uphade</span>
+            </a>
+          </div>
+        </div>
+
+        <form class="fade-in delay-2" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+          <div class="form-row">
+            <label>
+              Name
+              <input type="text" name="name" placeholder="Your name" autocomplete="name" required />
+            </label>
+            <label>
+              Email
+              <input type="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+            </label>
+          </div>
+          <label>
+            Subject
+            <input type="text" name="subject" placeholder="What's this about?" />
+          </label>
+          <label>
+            Message
+            <textarea name="message" rows="5" placeholder="Tell me about your project..." required></textarea>
+          </label>
+          <button type="submit" id="formSubmit">Send Message</button>
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <span>© 2026 Aditya Uphade</span>
+    <div class="footer-links">
+      <a href="https://github.com/" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://twitter.com/" target="_blank" rel="noopener">Twitter</a>
+      <a href="/assets/resume.pdf" target="_blank" rel="noopener">Resume</a>
+    </div>
+    <div class="footer-watermark" aria-hidden="true">AU</div>
+  </footer>
+
+  <script src="/js/main.js" defer></script>
+</body>
+</html>
