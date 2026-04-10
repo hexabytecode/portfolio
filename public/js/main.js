@@ -76,9 +76,15 @@ const fadeObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 
 // Hero elements are visible immediately
-document.querySelectorAll('#hero .fade-in').forEach(el => el.classList.add('visible'));
-// All other sections animate in on scroll
-document.querySelectorAll('section:not(#hero) .fade-in').forEach(el => fadeObserver.observe(el));
+const heroFadeEls = document.querySelectorAll('#hero .fade-in');
+heroFadeEls.forEach(el => el.classList.add('visible'));
+
+// All other fade-in elements on the page animate on scroll
+// (uses a Set to exclude hero children, catches elements outside <section> too e.g. .impact-bar)
+const heroSet = new Set(heroFadeEls);
+document.querySelectorAll('.fade-in').forEach(el => {
+  if (!heroSet.has(el)) fadeObserver.observe(el);
+});
 
 // ── CONTACT FORM ───────────────────────────────────────────────────────────
 const form   = document.querySelector('form');
