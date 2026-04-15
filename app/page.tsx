@@ -17,7 +17,7 @@ const navLinks = [
   { label: 'Work',     href: '/work' },
   { label: 'Projects', href: '/projects' },
   { label: 'GitHub',   href: 'https://github.com/hexabytecode', external: true },
-  { label: 'Resume',   href: '/assets/resume.pdf', external: true },
+  { label: 'Resume',   href: 'https://drive.google.com/file/d/1fCW4BxicHebNve0xj6afuYR2gKsu469R/view?usp=sharing', external: true },
 ]
 
 const footerLinks = [
