@@ -103,26 +103,27 @@ export default function Home() {
             marginTop: 'auto',
             paddingTop: 48,
             display: 'flex',
-            flexWrap: 'wrap',
-            gap: '8px 24px',
-            alignItems: 'center',
+            flexDirection: 'column',
+            gap: 14,
           }}
         >
-          <CopyEmail />
-          {footerLinks.map(({ label, href }) => (
-            <a
-              key={label}
-              href={href}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{ color: 'var(--muted)', transition: 'color 0.15s' }}
-              onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
-            >
-              {label}
-            </a>
-          ))}
-          <span style={{ color: 'var(--subtle)', marginLeft: 'auto' }}>© 2026</span>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 20px', alignItems: 'center' }}>
+            <CopyEmail />
+            {footerLinks.map(({ label, href }) => (
+              <a
+                key={label}
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: 'var(--muted)', fontSize: 13, transition: 'color 0.15s' }}
+                onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+                onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+          <span style={{ color: 'var(--subtle)', fontSize: 12 }}>© 2026</span>
         </motion.footer>
 
       </motion.div>

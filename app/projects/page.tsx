@@ -15,34 +15,20 @@ const item = {
 const projects = [
   {
     num: '01',
-    name: 'FIAB — Finance in a Box',
-    desc: 'Month-end checklist SaaS built 0→production as sole frontend engineer. Enterprise-grade design system, custom RBAC, Playwright E2E suite. Demo raised $100K in seed funding.',
-    tags: ['React', 'TypeScript', 'Shadcn/UI', 'RBAC', 'Playwright'],
-    href: null,
-    featured: true,
-  },
-  {
-    num: '02',
-    name: 'Urban Farms Analytics',
-    desc: 'Internal analytics dashboard for 500+ farming team members. Mobile-first component library built on Shadcn/UI for field data entry and visualisation.',
-    tags: ['React', 'Shadcn/UI', 'Mobile-first'],
-    href: null,
-    featured: false,
-  },
-  {
-    num: '03',
     name: 'VectorShift Clone',
     desc: 'Modular NodeBase pipeline builder with ReactFlow. Kahn\'s Algorithm for DAG validation (100% accuracy). FastAPI backend cut API latency to 320ms.',
     tags: ['React', 'ReactFlow', 'FastAPI', 'Python'],
     href: 'https://github.com/hexabytecode',
+    linkType: 'github' as const,
     featured: false,
   },
   {
-    num: '04',
+    num: '02',
     name: 'QKart — E-Commerce',
     desc: 'Full-stack e-commerce platform with JWT auth and REST APIs. Improved cross-device compatibility and cut app load time by 20%.',
     tags: ['React', 'Node.js', 'JWT', 'Material UI'],
     href: 'https://github.com/hexabytecode',
+    linkType: 'github' as const,
     featured: false,
   },
 ]
@@ -130,6 +116,7 @@ function ProjectRow({
   desc,
   tags,
   href,
+  linkType,
   featured,
 }: {
   num: string
@@ -137,6 +124,7 @@ function ProjectRow({
   desc: string
   tags: string[]
   href: string | null
+  linkType?: 'github' | 'live'
   featured: boolean
 }) {
   const [hovered, setHovered] = useState(false)
@@ -203,12 +191,15 @@ function ProjectRow({
           <span
             style={{
               color: 'var(--muted)',
-              fontSize: 13,
+              fontSize: 11,
+              fontFamily: 'var(--mono)',
+              letterSpacing: '0.04em',
               opacity: hovered ? 1 : 0,
               transition: 'opacity 0.15s',
+              whiteSpace: 'nowrap',
             }}
           >
-            ↗
+            {linkType === 'live' ? 'Live ↗' : 'GitHub ↗'}
           </span>
         )}
       </div>
