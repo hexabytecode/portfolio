@@ -111,31 +111,34 @@ export default function Work() {
               {/* Company header */}
               <div
                 style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'baseline',
-                  flexWrap: 'wrap',
-                  gap: '4px 16px',
                   paddingBottom: 16,
                   borderBottom: '1px solid var(--border)',
                   marginBottom: 28,
                 }}
               >
-                <div>
-                  <span style={{ fontWeight: 500, fontSize: 15 }}>{company}</span>
-                  <span style={{ color: 'var(--muted)', fontSize: 12, marginLeft: 12 }}>
-                    {role}
-                  </span>
-                </div>
-                <span
+                <div
                   style={{
-                    color: 'var(--subtle)',
-                    fontSize: 11,
-                    fontFamily: 'var(--mono)',
-                    whiteSpace: 'nowrap',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'baseline',
+                    gap: '4px 16px',
+                    flexWrap: 'wrap',
                   }}
                 >
-                  {period}
+                  <span style={{ fontWeight: 500, fontSize: 15 }}>{company}</span>
+                  <span
+                    style={{
+                      color: 'var(--subtle)',
+                      fontSize: 11,
+                      fontFamily: 'var(--mono)',
+                      whiteSpace: 'nowrap',
+                    }}
+                  >
+                    {period}
+                  </span>
+                </div>
+                <span style={{ color: 'var(--muted)', fontSize: 12, display: 'block', marginTop: 3 }}>
+                  {role}
                 </span>
               </div>
 
