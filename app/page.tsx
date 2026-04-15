@@ -25,6 +25,12 @@ const footerLinks = [
   { label: 'GitHub',   href: 'https://github.com/hexabytecode' },
 ]
 
+const highlights = [
+  { num: '$100K',   label: 'raised from a\nsingle demo' },
+  { num: '20,000+', label: 'users across\nproducts built' },
+  { num: '0→1',     label: 'twice, as the\nsole engineer' },
+]
+
 export default function Home() {
   return (
     <main
@@ -40,7 +46,7 @@ export default function Home() {
         variants={stagger}
         initial="initial"
         animate="animate"
-        style={{ display: 'flex', flexDirection: 'column', gap: 56, flex: 1 }}
+        style={{ display: 'flex', flexDirection: 'column', gap: 48, flex: 1 }}
       >
 
         {/* ── HERO ── */}
@@ -58,7 +64,7 @@ export default function Home() {
             Aditya Uphade
           </motion.h1>
           <motion.p variants={item} style={{ color: 'var(--muted)', fontSize: 14 }}>
-            a full stack engineer and frontend lead,{' '}
+            full stack engineer &amp; frontend lead,{' '}
             <span style={{ color: 'var(--subtle)' }}>based in Bangalore.</span>
           </motion.p>
         </section>
@@ -80,20 +86,55 @@ export default function Home() {
           ))}
         </motion.nav>
 
+        {/* ── HIGHLIGHTS ── */}
+        <motion.div
+          variants={item}
+          style={{
+            display: 'flex',
+            gap: '20px 48px',
+            flexWrap: 'wrap',
+          }}
+        >
+          {highlights.map(({ num, label }) => (
+            <div key={num} style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+              <span
+                style={{
+                  fontSize: 'clamp(22px, 4vw, 28px)',
+                  fontWeight: 600,
+                  color: 'var(--gold)',
+                  letterSpacing: '-0.03em',
+                  lineHeight: 1,
+                }}
+              >
+                {num}
+              </span>
+              <span
+                style={{
+                  fontSize: 11,
+                  color: 'var(--subtle)',
+                  lineHeight: 1.5,
+                  whiteSpace: 'pre-line',
+                }}
+              >
+                {label}
+              </span>
+            </div>
+          ))}
+        </motion.div>
+
         {/* ── STATEMENT ── */}
         <motion.p
           variants={item}
           style={{
             color: 'var(--muted)',
             fontSize: 14,
-            lineHeight: 1.8,
-            maxWidth: 440,
+            lineHeight: 1.85,
+            maxWidth: 460,
           }}
         >
-          shipped two products from 0&nbsp;→&nbsp;production as the sole frontend engineer.
-          raised $100K in seed funding. built for 20,000+ users.
-          care about the decisions that compound — architecture, design systems,
-          and the code that teams can grow without rewriting.
+          led both builds solo — from blank repo to live product. one investor demo raised
+          $100K in seed funding on the spot. care about the decisions that compound:
+          architecture, design systems, and code that teams can actually own.
         </motion.p>
 
         {/* ── FOOTER ── */}
