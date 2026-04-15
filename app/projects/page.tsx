@@ -17,9 +17,9 @@ const projects = [
     num: '01',
     name: 'VectorShift Clone',
     desc: 'Modular NodeBase pipeline builder with ReactFlow. Kahn\'s Algorithm for DAG validation (100% accuracy). FastAPI backend cut API latency to 320ms.',
-    tags: ['React', 'ReactFlow', 'FastAPI', 'Python'],
-    href: 'https://github.com/hexabytecode',
-    linkType: 'github' as const,
+    tags: ['React', 'ReactFlow', 'FastAPI', 'Python', 'Tailwind CSS'],
+    githubHref: 'https://github.com/hexabytecode/vector-shift-clone',
+    liveHref: 'https://super-robot-orpin.vercel.app/',
     featured: false,
   },
   {
@@ -27,8 +27,8 @@ const projects = [
     name: 'QKart — E-Commerce',
     desc: 'Full-stack e-commerce platform with JWT auth and REST APIs. Improved cross-device compatibility and cut app load time by 20%.',
     tags: ['React', 'Node.js', 'JWT', 'Material UI'],
-    href: 'https://github.com/hexabytecode',
-    linkType: 'github' as const,
+    githubHref: 'https://github.com/hexabytecode/QKart-react',
+    liveHref: 'https://qkart-psi-one.vercel.app/',
     featured: false,
   },
 ]
@@ -77,9 +77,17 @@ export default function Projects() {
 
         {/* ── LIST ── */}
         <div style={{ display: 'flex', flexDirection: 'column' }}>
-          {projects.map(project => (
-            <motion.div key={project.num} variants={item}>
-              <ProjectRow {...project} />
+          {projects.map(({ num, name, desc, tags, githubHref, liveHref, featured }) => (
+            <motion.div key={num} variants={item}>
+              <ProjectRow
+                num={num}
+                name={name}
+                desc={desc}
+                tags={tags}
+                githubHref={githubHref}
+                liveHref={liveHref}
+                featured={featured}
+              />
             </motion.div>
           ))}
 
@@ -115,30 +123,32 @@ function ProjectRow({
   name,
   desc,
   tags,
-  href,
-  linkType,
+  githubHref,
+  liveHref,
   featured,
 }: {
   num: string
   name: string
   desc: string
   tags: string[]
-  href: string | null
-  linkType?: 'github' | 'live'
+  githubHref?: string
+  liveHref?: string
   featured: boolean
 }) {
   const [hovered, setHovered] = useState(false)
 
-  const inner = (
+  return (
     <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
       style={{
         padding: '24px 0',
         borderBottom: '1px solid var(--border)',
         transition: 'border-color 0.2s',
-        borderColor: hovered ? 'var(--subtle)' : 'var(--border)',
-        cursor: href ? 'pointer' : 'default',
+        borderColor: hovered ? 'var(--muted)' : 'var(--border)',
       }}
     >
+      {/* Name row */}
       <div
         style={{
           display: 'flex',
@@ -149,21 +159,13 @@ function ProjectRow({
         }}
       >
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
-          <span
-            style={{
-              fontSize: 10,
-              color: 'var(--subtle)',
-              fontFamily: 'var(--mono)',
-              fontWeight: 500,
-            }}
-          >
+          <span style={{ fontSize: 10, color: 'var(--subtle)', fontFamily: 'var(--mono)', fontWeight: 500 }}>
             {num}
           </span>
           <span
             style={{
               fontSize: 14,
               fontWeight: 500,
-              color: hovered ? 'var(--text)' : 'var(--text)',
               letterSpacing: '-0.01em',
               transition: 'opacity 0.15s',
               opacity: hovered ? 1 : 0.9,
@@ -187,23 +189,61 @@ function ProjectRow({
             )}
           </span>
         </div>
-        {href && (
-          <span
-            style={{
-              color: 'var(--muted)',
-              fontSize: 11,
-              fontFamily: 'var(--mono)',
-              letterSpacing: '0.04em',
-              opacity: hovered ? 1 : 0,
-              transition: 'opacity 0.15s',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            {linkType === 'live' ? 'Live ↗' : 'GitHub ↗'}
-          </span>
-        )}
+
+        {/* Links */}
+        <div
+          style={{
+            display: 'flex',
+            gap: 12,
+            alignItems: 'center',
+            opacity: hovered ? 1 : 0,
+            transition: 'opacity 0.15s',
+          }}
+        >
+          {githubHref && (
+            <a
+              href={githubHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={e => e.stopPropagation()}
+              style={{
+                fontSize: 11,
+                fontFamily: 'var(--mono)',
+                letterSpacing: '0.04em',
+                color: 'var(--muted)',
+                whiteSpace: 'nowrap',
+                transition: 'color 0.15s',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
+            >
+              GitHub ↗
+            </a>
+          )}
+          {liveHref && (
+            <a
+              href={liveHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={e => e.stopPropagation()}
+              style={{
+                fontSize: 11,
+                fontFamily: 'var(--mono)',
+                letterSpacing: '0.04em',
+                color: 'var(--gold)',
+                whiteSpace: 'nowrap',
+                transition: 'color 0.15s',
+              }}
+              onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
+              onMouseLeave={e => (e.currentTarget.style.color = 'var(--gold)')}
+            >
+              Live ↗
+            </a>
+          )}
+        </div>
       </div>
 
+      {/* Description */}
       <p
         style={{
           color: 'var(--muted)',
@@ -217,6 +257,7 @@ function ProjectRow({
         {desc}
       </p>
 
+      {/* Tags */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, paddingLeft: 22 }}>
         {tags.map(tag => (
           <span
@@ -227,40 +268,16 @@ function ProjectRow({
               letterSpacing: '0.07em',
               textTransform: 'uppercase',
               padding: '3px 8px',
-              border: '1px solid var(--border)',
-              color: hovered ? 'var(--subtle)' : 'var(--subtle)',
-              borderColor: hovered ? 'var(--subtle)' : 'var(--border)',
-              transition: 'border-color 0.2s, color 0.2s',
+              border: '1px solid',
+              borderColor: hovered ? 'var(--muted)' : 'var(--border)',
+              color: 'var(--subtle)',
+              transition: 'border-color 0.2s',
             }}
           >
             {tag}
           </span>
         ))}
       </div>
-    </div>
-  )
-
-  if (href) {
-    return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
-        onMouseEnter={() => setHovered(true)}
-        onMouseLeave={() => setHovered(false)}
-      >
-        {inner}
-      </a>
-    )
-  }
-
-  return (
-    <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
-      {inner}
     </div>
   )
 }

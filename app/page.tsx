@@ -21,7 +21,7 @@ const navLinks = [
 ]
 
 const footerLinks = [
-  { label: 'LinkedIn', href: 'https://linkedin.com/in/aditya-uphade' },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/adityauphade/' },
   { label: 'GitHub',   href: 'https://github.com/hexabytecode' },
 ]
 
