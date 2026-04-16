@@ -104,7 +104,6 @@ export default function Work() {
   return (
     <main
       style={{
-        minHeight: '100dvh',
         padding: 'clamp(48px, 8vw, 96px) clamp(24px, 6vw, 72px)',
         maxWidth: 700,
       }}
@@ -113,7 +112,7 @@ export default function Work() {
         variants={stagger}
         initial="initial"
         animate="animate"
-        style={{ display: 'flex', flexDirection: 'column', gap: 64 }}
+        style={{ display: 'flex', flexDirection: 'column', gap: 32 }}
       >
 
         {/* ── BACK — mobile only, sidebar handles this on desktop ── */}
@@ -223,6 +222,7 @@ export default function Work() {
                                 color: 'var(--gold)',
                                 letterSpacing: '-0.02em',
                                 lineHeight: 1,
+                                borderBottom: '1.5px dotted rgba(220,38,38,0.35)',
                               }}
                             >
                               {stat.num}

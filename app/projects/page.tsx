@@ -36,7 +36,6 @@ export default function Projects() {
   return (
     <main
       style={{
-        minHeight: '100dvh',
         padding: 'clamp(48px, 8vw, 96px) clamp(24px, 6vw, 72px)',
         maxWidth: 700,
       }}
@@ -45,7 +44,7 @@ export default function Projects() {
         variants={stagger}
         initial="initial"
         animate="animate"
-        style={{ display: 'flex', flexDirection: 'column', gap: 64 }}
+        style={{ display: 'flex', flexDirection: 'column', gap: 32 }}
       >
 
         {/* ── BACK — mobile only, sidebar handles this on desktop ── */}
@@ -60,7 +59,7 @@ export default function Projects() {
         </motion.div>
 
         {/* ── LIST ── */}
-        <div style={{ display: 'flex', flexDirection: 'column' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', borderTop: '1px solid var(--border)' }}>
           {projects.map(({ num, name, desc, tags, githubHref, liveHref, featured }) => (
             <motion.div key={num} variants={item}>
               <ProjectRow

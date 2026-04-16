@@ -94,7 +94,7 @@ export default function Home() {
           </motion.nav>
 
           {/* ── Highlights ── */}
-          <motion.div variants={item} style={{ display: 'flex', gap: '20px 48px', flexWrap: 'wrap' }}>
+          <motion.div variants={item} style={{ display: 'flex', gap: '20px 36px', flexWrap: 'wrap' }}>
             {highlights.map(h => (
               <button
                 key={h.num}
@@ -117,10 +117,11 @@ export default function Home() {
                   color: 'var(--gold)',
                   letterSpacing: '-0.03em',
                   lineHeight: 1,
+                  borderBottom: '1.5px dotted rgba(220,38,38,0.35)',
                 }}>
                   {h.num}
                 </span>
-                <span style={{ fontSize: 11, color: 'var(--subtle)', lineHeight: 1.5, whiteSpace: 'pre-line' }}>
+                <span style={{ fontSize: 12, color: 'var(--subtle)', lineHeight: 1.5, whiteSpace: 'pre-line' }}>
                   {h.label}
                 </span>
               </button>
