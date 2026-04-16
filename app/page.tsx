@@ -1,8 +1,10 @@
 'use client'
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { AnimatedShapes } from '@/components/AnimatedShapes'
 import { CopyEmail } from '@/components/CopyEmail'
+import { MetricModal, type MetricData } from '@/components/MetricModal'
 
 const stagger = {
   animate: { transition: { staggerChildren: 0.08 } },
@@ -25,13 +27,30 @@ const footerLinks = [
   { label: 'GitHub',   href: 'https://github.com/hexabytecode' },
 ]
 
-const highlights = [
-  { num: '$100K',   label: 'raised from a\nsingle demo' },
-  { num: '20,000+', label: 'users across\nproducts built' },
-  { num: '0→1',     label: 'twice, as the\nsole engineer' },
+const highlights: MetricData[] = [
+  {
+    num: '$100K',
+    label: 'raised from a\nsingle demo',
+    detail:
+      'The investor demo I built for Finance in a Box (FIAB) at Levich closed a $100K seed round on the spot — a live product walkthrough, zero slides. I was the sole frontend engineer: designed the UI, built the demo flow, and shipped everything solo.',
+  },
+  {
+    num: '20,000+',
+    label: 'users across\nproducts built',
+    detail:
+      "At Morningstar, I was the primary SDE-1 on a research platform used by 20,000+ active users. I owned bug triage, feature delivery, and led a full UI revamp that added 1,000+ sign-ups in its first month. At Levich, I built FIAB's frontend from scratch and onboarded the first cohort of 1,000+ users.",
+  },
+  {
+    num: '0→1',
+    label: 'twice, as the\nsole engineer',
+    detail:
+      'Finance in a Box at Levich and Urban Farms Analytics — both products built from empty repo to production, solo. No templates, no handoffs. I owned the architecture, design system, component library, and deployment end to end, on both.',
+  },
 ]
 
 export default function Home() {
+  const [openMetric, setOpenMetric] = useState<MetricData | null>(null)
+
   return (
     <main
       style={{
@@ -63,21 +82,24 @@ export default function Home() {
           >
             Aditya Uphade
           </motion.h1>
-          <motion.p variants={item} style={{ color: 'var(--muted)', fontSize: 14 }}>
+          <motion.p
+            variants={item}
+            style={{ color: 'var(--muted)', fontSize: 14 }}
+          >
             full stack engineer &amp; frontend lead,{' '}
             <span style={{ color: 'var(--subtle)' }}>based in Bangalore.</span>
           </motion.p>
         </section>
 
         {/* ── SHAPES ── */}
-        <motion.div variants={item}>
+        <motion.div variants={item} style={{ width: 'fit-content' }}>
           <AnimatedShapes />
         </motion.div>
 
         {/* ── NAV ── */}
         <motion.nav
           variants={item}
-          style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 28px' }}
+          style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 20px' }}
         >
           {navLinks.map(({ label, href, external }) => (
             <NavLink key={label} href={href} external={external}>
@@ -86,17 +108,27 @@ export default function Home() {
           ))}
         </motion.nav>
 
-        {/* ── HIGHLIGHTS ── */}
+        {/* ── HIGHLIGHTS — clickable, open modal ── */}
         <motion.div
           variants={item}
-          style={{
-            display: 'flex',
-            gap: '20px 48px',
-            flexWrap: 'wrap',
-          }}
+          style={{ display: 'flex', gap: '20px 48px', flexWrap: 'wrap' }}
         >
-          {highlights.map(({ num, label }) => (
-            <div key={num} style={{ display: 'flex', flexDirection: 'column', gap: 5 }}>
+          {highlights.map(h => (
+            <button
+              key={h.num}
+              onClick={() => setOpenMetric(h)}
+              className="hi"
+              style={{
+                background: 'none',
+                border: 'none',
+                padding: '6px 10px',
+                margin: '-6px -10px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: 5,
+                textAlign: 'left',
+              }}
+            >
               <span
                 style={{
                   fontSize: 'clamp(22px, 4vw, 28px)',
@@ -106,19 +138,12 @@ export default function Home() {
                   lineHeight: 1,
                 }}
               >
-                {num}
+                {h.num}
               </span>
-              <span
-                style={{
-                  fontSize: 11,
-                  color: 'var(--subtle)',
-                  lineHeight: 1.5,
-                  whiteSpace: 'pre-line',
-                }}
-              >
-                {label}
+              <span style={{ fontSize: 11, color: 'var(--subtle)', lineHeight: 1.5, whiteSpace: 'pre-line' }}>
+                {h.label}
               </span>
-            </div>
+            </button>
           ))}
         </motion.div>
 
@@ -148,7 +173,7 @@ export default function Home() {
             gap: 14,
           }}
         >
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px 20px', alignItems: 'center' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 16px', alignItems: 'center' }}>
             <CopyEmail />
             {footerLinks.map(({ label, href }) => (
               <a
@@ -156,18 +181,19 @@ export default function Home() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: 'var(--muted)', fontSize: 13, transition: 'color 0.15s' }}
-                onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-                onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
+                className="hi"
+                style={{ color: 'var(--muted)', fontSize: 13, padding: '4px 8px', margin: '-4px -8px' }}
               >
                 {label}
               </a>
             ))}
           </div>
-          <span style={{ color: 'var(--subtle)', fontSize: 12 }}>© 2026</span>
+          <span style={{ color: 'var(--subtle)', fontSize: 12, paddingLeft: 2 }}>© 2026</span>
         </motion.footer>
 
       </motion.div>
+
+      <MetricModal metric={openMetric} onClose={() => setOpenMetric(null)} />
     </main>
   )
 }
@@ -184,27 +210,22 @@ function NavLink({
   const style: React.CSSProperties = {
     color: 'var(--muted)',
     fontSize: 13,
-    transition: 'color 0.15s',
     display: 'inline-flex',
     alignItems: 'center',
     gap: 3,
-  }
-  const handlers = {
-    onMouseEnter: (e: React.MouseEvent<HTMLAnchorElement>) =>
-      (e.currentTarget.style.color = 'var(--text)'),
-    onMouseLeave: (e: React.MouseEvent<HTMLAnchorElement>) =>
-      (e.currentTarget.style.color = 'var(--muted)'),
+    padding: '4px 8px',
+    margin: '-4px -8px',
   }
   if (external) {
     return (
-      <a href={href} target="_blank" rel="noopener noreferrer" style={style} {...handlers}>
+      <a href={href} target="_blank" rel="noopener noreferrer" className="hi" style={style}>
         {children}
         <span style={{ opacity: 0.5, fontSize: 10 }}>↗</span>
       </a>
     )
   }
   return (
-    <Link href={href} style={style} {...handlers}>
+    <Link href={href} className="hi" style={style}>
       {children}
     </Link>
   )

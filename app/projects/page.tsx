@@ -53,9 +53,8 @@ export default function Projects() {
         <motion.div variants={item}>
           <Link
             href="/"
-            style={{ color: 'var(--muted)', fontSize: 13, transition: 'color 0.15s' }}
-            onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-            onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
+            className="hi"
+            style={{ color: 'var(--muted)', fontSize: 13, padding: '4px 8px', margin: '-4px -8px' }}
           >
             ← Aditya Uphade
           </Link>
@@ -91,22 +90,22 @@ export default function Projects() {
             </motion.div>
           ))}
 
-          {/* GitHub link */}
+          {/* More on GitHub */}
           <motion.div variants={item} style={{ paddingTop: 32 }}>
             <a
               href="https://github.com/hexabytecode"
               target="_blank"
               rel="noopener noreferrer"
+              className="hi"
               style={{
                 color: 'var(--muted)',
                 fontSize: 13,
-                transition: 'color 0.15s',
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: 4,
+                padding: '4px 8px',
+                margin: '-4px -8px',
               }}
-              onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
             >
               More on GitHub ↗
             </a>
@@ -142,10 +141,9 @@ function ProjectRow({
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        padding: '24px 0',
+        padding: '20px 14px',
+        margin: '0 -14px',
         borderBottom: '1px solid var(--border)',
-        transition: 'border-color 0.2s',
-        borderColor: hovered ? 'var(--muted)' : 'var(--border)',
       }}
     >
       {/* Name row */}
@@ -159,18 +157,10 @@ function ProjectRow({
         }}
       >
         <div style={{ display: 'flex', alignItems: 'baseline', gap: 12 }}>
-          <span style={{ fontSize: 10, color: 'var(--subtle)', fontFamily: 'var(--mono)', fontWeight: 500 }}>
+          <span style={{ fontSize: 10, fontFamily: 'var(--mono)', fontWeight: 500, opacity: 0.6 }}>
             {num}
           </span>
-          <span
-            style={{
-              fontSize: 14,
-              fontWeight: 500,
-              letterSpacing: '-0.01em',
-              transition: 'opacity 0.15s',
-              opacity: hovered ? 1 : 0.9,
-            }}
-          >
+          <span style={{ fontSize: 14, fontWeight: 500, letterSpacing: '-0.01em' }}>
             {name}
             {featured && (
               <span
@@ -180,7 +170,6 @@ function ProjectRow({
                   fontWeight: 600,
                   letterSpacing: '0.1em',
                   textTransform: 'uppercase',
-                  color: 'var(--gold)',
                   opacity: 0.8,
                 }}
               >
@@ -190,14 +179,15 @@ function ProjectRow({
           </span>
         </div>
 
-        {/* Links */}
+        {/* Links — shown on row hover */}
         <div
           style={{
             display: 'flex',
-            gap: 12,
+            gap: 16,
             alignItems: 'center',
             opacity: hovered ? 1 : 0,
             transition: 'opacity 0.15s',
+            flexShrink: 0,
           }}
         >
           {githubHref && (
@@ -210,12 +200,10 @@ function ProjectRow({
                 fontSize: 11,
                 fontFamily: 'var(--mono)',
                 letterSpacing: '0.04em',
-                color: 'var(--muted)',
                 whiteSpace: 'nowrap',
-                transition: 'color 0.15s',
+                textDecoration: 'underline',
+                textUnderlineOffset: 3,
               }}
-              onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
             >
               GitHub ↗
             </a>
@@ -230,12 +218,10 @@ function ProjectRow({
                 fontSize: 11,
                 fontFamily: 'var(--mono)',
                 letterSpacing: '0.04em',
-                color: 'var(--gold)',
                 whiteSpace: 'nowrap',
-                transition: 'color 0.15s',
+                textDecoration: 'underline',
+                textUnderlineOffset: 3,
               }}
-              onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-              onMouseLeave={e => (e.currentTarget.style.color = 'var(--gold)')}
             >
               Live ↗
             </a>
@@ -246,12 +232,12 @@ function ProjectRow({
       {/* Description */}
       <p
         style={{
-          color: 'var(--muted)',
           fontSize: 12,
           lineHeight: 1.7,
           maxWidth: 520,
           marginBottom: 12,
           paddingLeft: 22,
+          opacity: 0.7,
         }}
       >
         {desc}
@@ -268,10 +254,9 @@ function ProjectRow({
               letterSpacing: '0.07em',
               textTransform: 'uppercase',
               padding: '3px 8px',
-              border: '1px solid',
-              borderColor: hovered ? 'var(--muted)' : 'var(--border)',
+              border: '1px solid var(--border)',
               color: 'var(--subtle)',
-              transition: 'border-color 0.2s',
+              borderRadius: 3,
             }}
           >
             {tag}
