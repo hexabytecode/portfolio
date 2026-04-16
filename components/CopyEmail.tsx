@@ -32,10 +32,14 @@ export function CopyEmail() {
         position: 'relative',
         display: 'inline-flex',
         alignItems: 'center',
-        gap: 6,
       }}
       aria-label="Copy email address"
     >
+      {/* Ghost: always laid out to lock the button's width to the email string */}
+      <span style={{ visibility: 'hidden', pointerEvents: 'none', whiteSpace: 'nowrap' }} aria-hidden>
+        {EMAIL}
+      </span>
+      {/* Animated label sits over the ghost, centered */}
       <AnimatePresence mode="wait" initial={false}>
         {copied ? (
           <motion.span
@@ -44,6 +48,7 @@ export function CopyEmail() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 6 }}
             transition={{ duration: 0.18 }}
+            style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', whiteSpace: 'nowrap' }}
           >
             Copied!
           </motion.span>
@@ -54,6 +59,7 @@ export function CopyEmail() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.18 }}
+            style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', whiteSpace: 'nowrap' }}
           >
             {EMAIL}
           </motion.span>

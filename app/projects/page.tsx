@@ -192,7 +192,7 @@ function ProjectRow({
       </div>
 
       {/* Description */}
-      <p style={{ fontSize: 12, lineHeight: 1.7, maxWidth: 520, marginBottom: 12, paddingLeft: 22, color: 'var(--muted)' }}>
+      <p style={{ fontSize: 13, lineHeight: 1.75, maxWidth: 520, marginBottom: 12, paddingLeft: 22, color: 'var(--muted)' }}>
         {desc}
       </p>
 

@@ -156,7 +156,7 @@ export default function Work() {
                     {period}
                   </span>
                 </div>
-                <span style={{ color: 'var(--muted)', fontSize: 12, display: 'block', marginTop: 3 }}>
+                <span style={{ color: 'var(--muted)', fontSize: 13, display: 'block', marginTop: 3 }}>
                   {role}
                 </span>
               </div>
@@ -190,8 +190,8 @@ export default function Work() {
                     <p
                       style={{
                         color: 'var(--muted)',
-                        fontSize: 13,
-                        lineHeight: 1.75,
+                        fontSize: 14,
+                        lineHeight: 1.8,
                         marginBottom: proj.stats.length ? 20 : 14,
                       }}
                     >
@@ -227,7 +227,7 @@ export default function Work() {
                             >
                               {stat.num}
                             </span>
-                            <span style={{ fontSize: 11, color: 'var(--muted)' }}>{stat.label}</span>
+                            <span style={{ fontSize: 12, color: 'var(--muted)' }}>{stat.label}</span>
                           </button>
                         ))}
                       </div>

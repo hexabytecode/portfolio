@@ -26,11 +26,11 @@ export function Sidebar() {
           href="/"
           style={{
             display: 'inline-block',
-            fontSize: 20,
+            fontSize: 26,
             fontWeight: 600,
-            letterSpacing: '-0.02em',
+            letterSpacing: '-0.03em',
             color: 'var(--text)',
-            lineHeight: 1.2,
+            lineHeight: 1.15,
             padding: '3px 6px',
             margin: '-3px -6px',
             borderRadius: 3,
@@ -40,7 +40,7 @@ export function Sidebar() {
         >
           Aditya Uphade
         </Link>
-        <p style={{ fontSize: 12, color: 'var(--subtle)', lineHeight: 1.6, marginTop: 8 }}>
+        <p style={{ fontSize: 13, color: 'var(--muted)', lineHeight: 1.65, marginTop: 10 }}>
           full stack engineer &amp;<br />frontend lead, Bangalore
         </p>
       </div>
@@ -104,7 +104,7 @@ export function Sidebar() {
             target="_blank"
             rel="noopener noreferrer"
             className="hi"
-            style={{ color: 'var(--muted)', fontSize: 13, padding: '4px 8px', margin: '0 -8px' }}
+            style={{ color: 'var(--muted)', fontSize: 13, padding: '4px 8px', margin: '0 -8px', whiteSpace: 'nowrap' }}
           >
             {label}
           </a>
@@ -116,7 +116,7 @@ export function Sidebar() {
 }
 
 const linkStyle: React.CSSProperties = {
-  fontSize: 13,
+  fontSize: 14,
   display: 'flex',
   alignItems: 'center',
   padding: '6px 8px',

@@ -100,8 +100,8 @@ a, button, [role="button"], input, select, textarea, label { cursor: none; }
   }
   /* Uniform desktop padding for all pages */
   .root-main main {
-    padding: 56px 60px !important;
-    max-width: 680px;
+    padding: 56px 64px !important;
+    max-width: 720px;
   }
   /* Landing: stretch main to full viewport, then center content within it */
   .root-main .home-main-content {
