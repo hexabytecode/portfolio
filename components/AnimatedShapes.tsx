@@ -29,7 +29,8 @@ export function AnimatedShapes() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformStyle: 'preserve-3d', perspective: 800 }}
-      className="flex items-center gap-3 w-fit cursor-default select-none"
+      className="flex items-center gap-3 w-fit select-none"
+      style={{ cursor: 'none' }}
     >
       {/* Large gold pill */}
       <motion.div
