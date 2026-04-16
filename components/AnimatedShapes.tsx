@@ -36,8 +36,8 @@ export function AnimatedShapes() {
         animate={{ y: [0, -7, 3, 0], rotate: [0, 2, -1.5, 0] }}
         transition={{ duration: 5.5, repeat: Infinity, ease: 'easeInOut' }}
         style={{
-          width: 148,
-          height: 48,
+          width: 'clamp(100px, 38vw, 148px)',
+          height: 'clamp(32px, 12vw, 48px)',
           borderRadius: 9999,
           background: 'var(--gold)',
           translateZ: 20,
@@ -49,8 +49,8 @@ export function AnimatedShapes() {
         animate={{ y: [0, 6, -4, 0], rotate: [0, -2.5, 1, 0] }}
         transition={{ duration: 4.8, repeat: Infinity, ease: 'easeInOut', delay: 0.35 }}
         style={{
-          width: 96,
-          height: 48,
+          width: 'clamp(64px, 24vw, 96px)',
+          height: 'clamp(32px, 12vw, 48px)',
           borderRadius: 9999,
           background: 'var(--amber)',
           translateZ: 12,
@@ -62,8 +62,8 @@ export function AnimatedShapes() {
         animate={{ scale: [1, 1.08, 0.93, 1], y: [0, -5, 3, 0] }}
         transition={{ duration: 6.2, repeat: Infinity, ease: 'easeInOut', delay: 0.7 }}
         style={{
-          width: 48,
-          height: 48,
+          width: 'clamp(32px, 12vw, 48px)',
+          height: 'clamp(32px, 12vw, 48px)',
           borderRadius: 9999,
           background: 'var(--gold)',
           opacity: 0.45,
