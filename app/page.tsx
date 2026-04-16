@@ -135,9 +135,9 @@ export default function Home() {
           </motion.p>
 
           {/* ── Footer — mobile only ── */}
-          <motion.footer variants={item} className="mobile-only" style={{ marginTop: 'auto', paddingTop: 48, display: 'flex', flexDirection: 'column', gap: 14 }}>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 16px', alignItems: 'center' }}>
-              <CopyEmail />
+          <motion.footer variants={item} className="mobile-only" style={{ marginTop: 'auto', paddingTop: 48, display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <CopyEmail />
+            <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
               {footerLinks.map(({ label, href }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="hi"
                   style={{ color: 'var(--muted)', fontSize: 13, padding: '4px 8px', margin: '-4px -8px' }}>
@@ -145,7 +145,7 @@ export default function Home() {
                 </a>
               ))}
             </div>
-            <span style={{ color: 'var(--subtle)', fontSize: 12, paddingLeft: 2 }}>© 2026</span>
+            <span style={{ color: 'var(--subtle)', fontSize: 12, paddingLeft: 2, paddingTop: 4 }}>© 2026</span>
           </motion.footer>
 
         </motion.div>

@@ -117,7 +117,7 @@ export default function Work() {
       >
 
         {/* ── BACK — mobile only, sidebar handles this on desktop ── */}
-        <motion.div variants={item} className="desktop-hide">
+        <motion.div variants={item}>
           <Link
             href="/"
             className="hi"

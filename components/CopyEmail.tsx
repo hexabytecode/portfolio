@@ -1,6 +1,5 @@
 'use client'
 import { useState } from 'react'
-import { AnimatePresence, motion } from 'framer-motion'
 
 const EMAIL = 'adityauphade99@gmail.com'
 
@@ -30,41 +29,36 @@ export function CopyEmail() {
         padding: '4px 8px',
         margin: '-4px -8px',
         position: 'relative',
-        display: 'inline-flex',
-        alignItems: 'center',
+        display: 'inline-block',
+        textAlign: 'left',
       }}
       aria-label="Copy email address"
     >
-      {/* Ghost: always laid out to lock the button's width to the email string */}
-      <span style={{ visibility: 'hidden', pointerEvents: 'none', whiteSpace: 'nowrap' }} aria-hidden>
+      {/* Always in DOM → locks button to the email's natural width */}
+      <span style={{
+        display: 'block',
+        whiteSpace: 'nowrap',
+        opacity: copied ? 0 : 1,
+        transition: 'opacity 0.15s ease',
+      }}>
         {EMAIL}
       </span>
-      {/* Animated label sits over the ghost, centered */}
-      <AnimatePresence mode="wait" initial={false}>
-        {copied ? (
-          <motion.span
-            key="copied"
-            initial={{ opacity: 0, y: -6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 6 }}
-            transition={{ duration: 0.18 }}
-            style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', whiteSpace: 'nowrap' }}
-          >
-            Copied!
-          </motion.span>
-        ) : (
-          <motion.span
-            key="email"
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.18 }}
-            style={{ position: 'absolute', left: '50%', transform: 'translateX(-50%)', whiteSpace: 'nowrap' }}
-          >
-            {EMAIL}
-          </motion.span>
-        )}
-      </AnimatePresence>
+      {/* Overlays in the exact same spot; only visible when copied */}
+      <span
+        aria-hidden
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '8px',
+          transform: 'translateY(-50%)',
+          whiteSpace: 'nowrap',
+          opacity: copied ? 1 : 0,
+          transition: 'opacity 0.15s ease',
+          pointerEvents: 'none',
+        }}
+      >
+        Copied!
+      </span>
     </button>
   )
 }
