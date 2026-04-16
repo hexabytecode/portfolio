@@ -20,22 +20,20 @@ export function CopyEmail() {
   return (
     <button
       onClick={handleCopy}
+      className="hi"
       style={{
         background: 'none',
         border: 'none',
-        cursor: 'pointer',
         color: 'var(--muted)',
-        fontSize: 'inherit',
+        fontSize: 13,
         fontFamily: 'inherit',
-        padding: 0,
+        padding: '4px 8px',
+        margin: '-4px -8px',
         position: 'relative',
         display: 'inline-flex',
         alignItems: 'center',
         gap: 6,
-        transition: 'color 0.15s',
       }}
-      onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-      onMouseLeave={e => (e.currentTarget.style.color = 'var(--muted)')}
       aria-label="Copy email address"
     >
       <AnimatePresence mode="wait" initial={false}>
@@ -46,7 +44,6 @@ export function CopyEmail() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 6 }}
             transition={{ duration: 0.18 }}
-            style={{ color: 'var(--gold)' }}
           >
             Copied!
           </motion.span>

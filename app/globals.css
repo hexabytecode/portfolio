@@ -68,6 +68,55 @@ a, button, [role="button"], input, select, textarea, label { cursor: none; }
 /* ── SCROLLBAR ── */
 ::-webkit-scrollbar { width: 0px; }
 
+/* ── SIDEBAR LAYOUT ── */
+/* Mobile: sidebar hidden, content full-width */
+.sidebar       { display: none; }
+.mobile-only   { display: block; }
+.desktop-hide  { display: block; }
+
+@media (min-width: 1024px) {
+  /* Root grid */
+  .root-layout {
+    display: grid;
+    grid-template-columns: 252px 1fr;
+    min-height: 100dvh;
+  }
+
+  /* Sticky sidebar */
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    height: 100dvh;
+    padding: 48px 28px;
+    border-right: 1px solid var(--border);
+  }
+
+  /* Right content pane */
+  .root-main {
+    min-height: 100dvh;
+    overflow-y: auto;
+  }
+  /* Uniform desktop padding for all pages */
+  .root-main main {
+    padding: 56px 60px !important;
+    max-width: 680px;
+  }
+  /* Landing: stretch main to full viewport, then center content within it */
+  .root-main .home-main-content {
+    min-height: 100dvh;
+  }
+  .home-stagger {
+    justify-content: center;
+  }
+
+  /* Hide mobile-only blocks on desktop */
+  .mobile-only  { display: none !important; }
+  /* Hide desktop-redundant elements (e.g. back links) */
+  .desktop-hide { display: none !important; }
+}
+
 /* ── HOVER INVERT ── */
 .hi {
   transition: background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease;

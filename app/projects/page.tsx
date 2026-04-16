@@ -1,7 +1,6 @@
 'use client'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { useState } from 'react'
 
 const stagger = {
   animate: { transition: { staggerChildren: 0.06 } },
@@ -49,8 +48,8 @@ export default function Projects() {
         style={{ display: 'flex', flexDirection: 'column', gap: 64 }}
       >
 
-        {/* ── BACK ── */}
-        <motion.div variants={item}>
+        {/* ── BACK — mobile only, sidebar handles this on desktop ── */}
+        <motion.div variants={item} className="desktop-hide">
           <Link
             href="/"
             className="hi"
@@ -59,20 +58,6 @@ export default function Projects() {
             ← Aditya Uphade
           </Link>
         </motion.div>
-
-        {/* ── LABEL ── */}
-        <motion.p
-          variants={item}
-          style={{
-            fontSize: 10,
-            fontWeight: 600,
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: 'var(--gold)',
-          }}
-        >
-          Projects
-        </motion.p>
 
         {/* ── LIST ── */}
         <div style={{ display: 'flex', flexDirection: 'column' }}>
@@ -134,19 +119,14 @@ function ProjectRow({
   liveHref?: string
   featured: boolean
 }) {
-  const [hovered, setHovered] = useState(false)
-
   return (
     <div
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
       style={{
-        padding: '20px 14px',
-        margin: '0 -14px',
+        padding: '20px 0',
         borderBottom: '1px solid var(--border)',
       }}
     >
-      {/* Name row */}
+      {/* Name + links row */}
       <div
         style={{
           display: 'flex',
@@ -163,46 +143,28 @@ function ProjectRow({
           <span style={{ fontSize: 14, fontWeight: 500, letterSpacing: '-0.01em' }}>
             {name}
             {featured && (
-              <span
-                style={{
-                  marginLeft: 8,
-                  fontSize: 9,
-                  fontWeight: 600,
-                  letterSpacing: '0.1em',
-                  textTransform: 'uppercase',
-                  opacity: 0.8,
-                }}
-              >
+              <span style={{ marginLeft: 8, fontSize: 9, fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', opacity: 0.8 }}>
                 Featured
               </span>
             )}
           </span>
         </div>
 
-        {/* Links — shown on row hover */}
-        <div
-          style={{
-            display: 'flex',
-            gap: 16,
-            alignItems: 'center',
-            opacity: hovered ? 1 : 0,
-            transition: 'opacity 0.15s',
-            flexShrink: 0,
-          }}
-        >
+        {/* Links — always visible */}
+        <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexShrink: 0 }}>
           {githubHref && (
             <a
               href={githubHref}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={e => e.stopPropagation()}
+              className="hi"
               style={{
                 fontSize: 11,
                 fontFamily: 'var(--mono)',
                 letterSpacing: '0.04em',
-                whiteSpace: 'nowrap',
-                textDecoration: 'underline',
-                textUnderlineOffset: 3,
+                color: 'var(--subtle)',
+                padding: '3px 6px',
+                margin: '-3px -6px',
               }}
             >
               GitHub ↗
@@ -213,14 +175,14 @@ function ProjectRow({
               href={liveHref}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={e => e.stopPropagation()}
+              className="hi"
               style={{
                 fontSize: 11,
                 fontFamily: 'var(--mono)',
                 letterSpacing: '0.04em',
-                whiteSpace: 'nowrap',
-                textDecoration: 'underline',
-                textUnderlineOffset: 3,
+                color: 'var(--subtle)',
+                padding: '3px 6px',
+                margin: '-3px -6px',
               }}
             >
               Live ↗
@@ -230,16 +192,7 @@ function ProjectRow({
       </div>
 
       {/* Description */}
-      <p
-        style={{
-          fontSize: 12,
-          lineHeight: 1.7,
-          maxWidth: 520,
-          marginBottom: 12,
-          paddingLeft: 22,
-          opacity: 0.7,
-        }}
-      >
+      <p style={{ fontSize: 12, lineHeight: 1.7, maxWidth: 520, marginBottom: 12, paddingLeft: 22, color: 'var(--muted)' }}>
         {desc}
       </p>
 

@@ -116,8 +116,8 @@ export default function Work() {
         style={{ display: 'flex', flexDirection: 'column', gap: 64 }}
       >
 
-        {/* ── BACK ── */}
-        <motion.div variants={item}>
+        {/* ── BACK — mobile only, sidebar handles this on desktop ── */}
+        <motion.div variants={item} className="desktop-hide">
           <Link
             href="/"
             className="hi"
@@ -126,20 +126,6 @@ export default function Work() {
             ← Aditya Uphade
           </Link>
         </motion.div>
-
-        {/* ── LABEL ── */}
-        <motion.p
-          variants={item}
-          style={{
-            fontSize: 10,
-            fontWeight: 600,
-            letterSpacing: '0.18em',
-            textTransform: 'uppercase',
-            color: 'var(--gold)',
-          }}
-        >
-          Work
-        </motion.p>
 
         {/* ── ENTRIES ── */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 56 }}>

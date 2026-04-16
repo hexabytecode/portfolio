@@ -6,10 +6,7 @@ import { AnimatedShapes } from '@/components/AnimatedShapes'
 import { CopyEmail } from '@/components/CopyEmail'
 import { MetricModal, type MetricData } from '@/components/MetricModal'
 
-const stagger = {
-  animate: { transition: { staggerChildren: 0.08 } },
-}
-
+const stagger = { animate: { transition: { staggerChildren: 0.08 } } }
 const item = {
   initial: { opacity: 0, y: 12 },
   animate: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.2, 0.8, 0.2, 1] } },
@@ -52,181 +49,122 @@ export default function Home() {
   const [openMetric, setOpenMetric] = useState<MetricData | null>(null)
 
   return (
-    <main
-      style={{
-        minHeight: '100dvh',
+    <>
+      <main className="home-main-content" style={{
         display: 'flex',
         flexDirection: 'column',
         padding: 'clamp(48px, 8vw, 96px) clamp(24px, 6vw, 72px)',
-        maxWidth: 680,
-      }}
-    >
-      <motion.div
-        variants={stagger}
-        initial="initial"
-        animate="animate"
-        style={{ display: 'flex', flexDirection: 'column', gap: 48, flex: 1 }}
-      >
-
-        {/* ── HERO ── */}
-        <section style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-          <motion.h1
-            variants={item}
-            style={{
+      }}>
+        <motion.div
+          variants={stagger}
+          initial="initial"
+          animate="animate"
+          className="home-stagger"
+          style={{ display: 'flex', flexDirection: 'column', gap: 48, flex: 1 }}
+        >
+          {/* ── Hero — mobile only (sidebar shows name on desktop) ── */}
+          <motion.section variants={item} className="mobile-only" style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+            <h1 style={{
               fontSize: 'clamp(36px, 6vw, 52px)',
               fontWeight: 500,
               letterSpacing: '-0.02em',
               lineHeight: 1.1,
               color: 'var(--text)',
-            }}
-          >
-            Aditya Uphade
-          </motion.h1>
-          <motion.p
-            variants={item}
-            style={{ color: 'var(--muted)', fontSize: 14 }}
-          >
-            full stack engineer &amp; frontend lead,{' '}
-            <span style={{ color: 'var(--subtle)' }}>based in Bangalore.</span>
-          </motion.p>
-        </section>
+            }}>
+              Aditya Uphade
+            </h1>
+            <p style={{ color: 'var(--muted)', fontSize: 14 }}>
+              full stack engineer &amp; frontend lead,{' '}
+              <span style={{ color: 'var(--subtle)' }}>based in Bangalore.</span>
+            </p>
+          </motion.section>
 
-        {/* ── SHAPES ── */}
-        <motion.div variants={item} style={{ width: 'fit-content' }}>
-          <AnimatedShapes />
-        </motion.div>
+          {/* ── Shapes ── */}
+          <motion.div variants={item} style={{ width: 'fit-content' }}>
+            <div className="desktop-shapes">
+              <AnimatedShapes />
+            </div>
+          </motion.div>
 
-        {/* ── NAV ── */}
-        <motion.nav
-          variants={item}
-          style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 20px' }}
-        >
-          {navLinks.map(({ label, href, external }) => (
-            <NavLink key={label} href={href} external={external}>
-              {label}
-            </NavLink>
-          ))}
-        </motion.nav>
+          {/* ── Nav — mobile only ── */}
+          <motion.nav variants={item} className="mobile-only" style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 20px' }}>
+            {navLinks.map(({ label, href, external }) => (
+              <NavLink key={label} href={href} external={external}>{label}</NavLink>
+            ))}
+          </motion.nav>
 
-        {/* ── HIGHLIGHTS — clickable, open modal ── */}
-        <motion.div
-          variants={item}
-          style={{ display: 'flex', gap: '20px 48px', flexWrap: 'wrap' }}
-        >
-          {highlights.map(h => (
-            <button
-              key={h.num}
-              onClick={() => setOpenMetric(h)}
-              className="hi"
-              style={{
-                background: 'none',
-                border: 'none',
-                padding: '6px 10px',
-                margin: '-6px -10px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 5,
-                textAlign: 'left',
-              }}
-            >
-              <span
+          {/* ── Highlights ── */}
+          <motion.div variants={item} style={{ display: 'flex', gap: '20px 48px', flexWrap: 'wrap' }}>
+            {highlights.map(h => (
+              <button
+                key={h.num}
+                onClick={() => setOpenMetric(h)}
+                className="hi"
                 style={{
+                  background: 'none',
+                  border: 'none',
+                  padding: '6px 10px',
+                  margin: '-6px -10px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 5,
+                  textAlign: 'left',
+                }}
+              >
+                <span style={{
                   fontSize: 'clamp(22px, 4vw, 28px)',
                   fontWeight: 600,
                   color: 'var(--gold)',
                   letterSpacing: '-0.03em',
                   lineHeight: 1,
-                }}
-              >
-                {h.num}
-              </span>
-              <span style={{ fontSize: 11, color: 'var(--subtle)', lineHeight: 1.5, whiteSpace: 'pre-line' }}>
-                {h.label}
-              </span>
-            </button>
-          ))}
-        </motion.div>
-
-        {/* ── STATEMENT ── */}
-        <motion.p
-          variants={item}
-          style={{
-            color: 'var(--muted)',
-            fontSize: 14,
-            lineHeight: 1.85,
-            maxWidth: 460,
-          }}
-        >
-          led both builds solo — from blank repo to live product. one investor demo raised
-          $100K in seed funding on the spot. care about the decisions that compound:
-          architecture, design systems, and code that teams can actually own.
-        </motion.p>
-
-        {/* ── FOOTER ── */}
-        <motion.footer
-          variants={item}
-          style={{
-            marginTop: 'auto',
-            paddingTop: 48,
-            display: 'flex',
-            flexDirection: 'column',
-            gap: 14,
-          }}
-        >
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 16px', alignItems: 'center' }}>
-            <CopyEmail />
-            {footerLinks.map(({ label, href }) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hi"
-                style={{ color: 'var(--muted)', fontSize: 13, padding: '4px 8px', margin: '-4px -8px' }}
-              >
-                {label}
-              </a>
+                }}>
+                  {h.num}
+                </span>
+                <span style={{ fontSize: 11, color: 'var(--subtle)', lineHeight: 1.5, whiteSpace: 'pre-line' }}>
+                  {h.label}
+                </span>
+              </button>
             ))}
-          </div>
-          <span style={{ color: 'var(--subtle)', fontSize: 12, paddingLeft: 2 }}>© 2026</span>
-        </motion.footer>
+          </motion.div>
 
-      </motion.div>
+          {/* ── Statement ── */}
+          <motion.p variants={item} style={{ color: 'var(--muted)', fontSize: 14, lineHeight: 1.85, maxWidth: 460 }}>
+            led both builds solo — from blank repo to live product. one investor demo raised
+            $100K in seed funding on the spot. care about the decisions that compound:
+            architecture, design systems, and code that teams can actually own.
+          </motion.p>
+
+          {/* ── Footer — mobile only ── */}
+          <motion.footer variants={item} className="mobile-only" style={{ marginTop: 'auto', paddingTop: 48, display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 16px', alignItems: 'center' }}>
+              <CopyEmail />
+              {footerLinks.map(({ label, href }) => (
+                <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="hi"
+                  style={{ color: 'var(--muted)', fontSize: 13, padding: '4px 8px', margin: '-4px -8px' }}>
+                  {label}
+                </a>
+              ))}
+            </div>
+            <span style={{ color: 'var(--subtle)', fontSize: 12, paddingLeft: 2 }}>© 2026</span>
+          </motion.footer>
+
+        </motion.div>
+      </main>
 
       <MetricModal metric={openMetric} onClose={() => setOpenMetric(null)} />
-    </main>
+    </>
   )
 }
 
-function NavLink({
-  href,
-  external,
-  children,
-}: {
-  href: string
-  external?: boolean
-  children: React.ReactNode
-}) {
+function NavLink({ href, external, children }: { href: string; external?: boolean; children: React.ReactNode }) {
   const style: React.CSSProperties = {
-    color: 'var(--muted)',
-    fontSize: 13,
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: 3,
-    padding: '4px 8px',
-    margin: '-4px -8px',
+    color: 'var(--muted)', fontSize: 13, display: 'inline-flex',
+    alignItems: 'center', gap: 3, padding: '4px 8px', margin: '-4px -8px',
   }
-  if (external) {
-    return (
-      <a href={href} target="_blank" rel="noopener noreferrer" className="hi" style={style}>
-        {children}
-        <span style={{ opacity: 0.5, fontSize: 10 }}>↗</span>
-      </a>
-    )
-  }
-  return (
-    <Link href={href} className="hi" style={style}>
-      {children}
-    </Link>
+  if (external) return (
+    <a href={href} target="_blank" rel="noopener noreferrer" className="hi" style={style}>
+      {children}<span style={{ opacity: 0.5, fontSize: 10 }}>↗</span>
+    </a>
   )
+  return <Link href={href} className="hi" style={style}>{children}</Link>
 }
