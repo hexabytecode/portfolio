@@ -130,9 +130,9 @@ export default function Home() {
 
           {/* ── Statement ── */}
           <motion.p variants={item} style={{ color: 'var(--muted)', fontSize: 14, lineHeight: 1.85, maxWidth: 460 }}>
-            led both builds solo — from blank repo to live product. one investor demo raised
-            $100K in seed funding on the spot. care about the decisions that compound:
-            architecture, design systems, and code that teams can actually own.
+            built two products from zero — both solo, both shipped end to end. one investor
+            demo raised $100K in seed funding on the spot. i care about decisions that
+            compound: architecture, design systems, and code that teams can actually own.
           </motion.p>
 
           {/* ── Footer — mobile only ── */}

@@ -1,5 +1,5 @@
 'use client'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 // Pixelated arrow — tip at (0,0), points up-left like a classic cursor
 function PixelArrow() {
@@ -36,8 +36,21 @@ function PixelArrow() {
 export function CustomCursor() {
   const arrowRef = useRef<HTMLDivElement>(null)
   const ringRef  = useRef<HTMLDivElement>(null)
+  const [isFinePointer, setIsFinePointer] = useState(false)
+
+  // Only show custom cursor on devices with a fine pointer (mouse/trackpad).
+  // On touch screens (pointer: coarse) there is no hover, so we hide it.
+  useEffect(() => {
+    const mq = window.matchMedia('(pointer: fine)')
+    setIsFinePointer(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setIsFinePointer(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
 
   useEffect(() => {
+    if (!isFinePointer) return   // skip all mouse tracking on touch devices
+
     let mx = -200, my = -200
     let rx = -200, ry = -200
     let raf: number
@@ -102,7 +115,9 @@ export function CustomCursor() {
       document.removeEventListener('mouseover', docEnter)
       cancelAnimationFrame(raf)
     }
-  }, [])
+  }, [isFinePointer])
+
+  if (!isFinePointer) return null
 
   return (
     <>
