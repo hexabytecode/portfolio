@@ -15,7 +15,7 @@ const projects = [
   {
     num: '01',
     name: 'VectorShift Clone',
-    desc: 'Modular NodeBase pipeline builder with ReactFlow. Kahn\'s Algorithm for DAG validation (100% accuracy). FastAPI backend cut API latency to 320ms.',
+    desc: 'Visual AI pipeline editor with 100% accurate DAG validation and a ReactFlow node canvas. FastAPI backend serves the graph execution layer at 320ms latency.',
     tags: ['React', 'ReactFlow', 'FastAPI', 'Python', 'Tailwind CSS'],
     githubHref: 'https://github.com/hexabytecode/vector-shift-clone',
     liveHref: 'https://super-robot-orpin.vercel.app/',
@@ -24,7 +24,7 @@ const projects = [
   {
     num: '02',
     name: 'QKart — E-Commerce',
-    desc: 'Full-stack e-commerce platform with JWT auth and REST APIs. Improved cross-device compatibility and cut app load time by 20%.',
+    desc: 'Full-stack e-commerce platform with a 20% faster load time post-optimisation. JWT auth, REST APIs, and fully cross-device compatible from day one.',
     tags: ['React', 'Node.js', 'JWT', 'Material UI'],
     githubHref: 'https://github.com/hexabytecode/QKart-react',
     liveHref: 'https://qkart-psi-one.vercel.app/',

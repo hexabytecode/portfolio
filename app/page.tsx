@@ -86,15 +86,19 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* ── Nav — mobile only ── */}
-          <motion.nav variants={item} className="mobile-only" style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 20px' }}>
-            {navLinks.map(({ label, href, external }) => (
-              <NavLink key={label} href={href} external={external}>{label}</NavLink>
-            ))}
-          </motion.nav>
+          {/* ── Statement — comes before metrics so the hook lands first ── */}
+          <motion.p variants={item} style={{ color: 'var(--muted)', fontSize: 14, lineHeight: 1.85, maxWidth: 460 }}>
+            built two products from zero — both solo, both shipped end to end. one investor
+            demo raised $100K in seed funding on the spot. i care about decisions that
+            compound: architecture, design systems, and code that teams can actually own.
+          </motion.p>
 
-          {/* ── Highlights ── */}
-          <motion.div variants={item} style={{ display: 'flex', gap: '20px 36px', flexWrap: 'wrap' }}>
+          {/* ── Highlights — equal-width grid so every card is the same size ── */}
+          <motion.div variants={item} style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '20px 16px',
+          }}>
             {highlights.map(h => (
               <button
                 key={h.num}
@@ -103,40 +107,42 @@ export default function Home() {
                 style={{
                   background: 'none',
                   border: 'none',
-                  padding: '6px 10px',
-                  margin: '-6px -10px',
+                  padding: '8px 10px',
+                  width: '100%',
                   display: 'flex',
                   flexDirection: 'column',
-                  gap: 5,
+                  gap: 6,
                   textAlign: 'left',
                 }}
               >
                 <span style={{
-                  fontSize: 'clamp(22px, 4vw, 28px)',
+                  fontSize: 'clamp(20px, 4vw, 28px)',
                   fontWeight: 600,
                   color: 'var(--gold)',
                   letterSpacing: '-0.03em',
                   lineHeight: 1,
                   borderBottom: '1.5px dotted rgba(220,38,38,0.35)',
+                  paddingBottom: 4,
+                  display: 'block',
                 }}>
                   {h.num}
                 </span>
-                <span style={{ fontSize: 12, color: 'var(--subtle)', lineHeight: 1.5, whiteSpace: 'pre-line' }}>
+                <span style={{ fontSize: 11, color: 'var(--subtle)', lineHeight: 1.5, whiteSpace: 'pre-line' }}>
                   {h.label}
                 </span>
               </button>
             ))}
           </motion.div>
 
-          {/* ── Statement ── */}
-          <motion.p variants={item} style={{ color: 'var(--muted)', fontSize: 14, lineHeight: 1.85, maxWidth: 460 }}>
-            built two products from zero — both solo, both shipped end to end. one investor
-            demo raised $100K in seed funding on the spot. i care about decisions that
-            compound: architecture, design systems, and code that teams can actually own.
-          </motion.p>
+          {/* ── Nav — mobile only, after content so visitor is convinced before navigating ── */}
+          <motion.nav variants={item} className="mobile-only" style={{ display: 'flex', flexWrap: 'wrap', gap: '8px 20px' }}>
+            {navLinks.map(({ label, href, external }) => (
+              <NavLink key={label} href={href} external={external}>{label}</NavLink>
+            ))}
+          </motion.nav>
 
           {/* ── Footer — mobile only ── */}
-          <motion.footer variants={item} className="mobile-only" style={{ marginTop: 'auto', paddingTop: 48, display: 'flex', flexDirection: 'column', gap: 10 }}>
+          <motion.footer variants={item} className="mobile-only" style={{ marginTop: 'auto', paddingTop: 24, display: 'flex', flexDirection: 'column', gap: 10 }}>
             <CopyEmail />
             <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
               {footerLinks.map(({ label, href }) => (

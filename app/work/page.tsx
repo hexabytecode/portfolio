@@ -23,7 +23,7 @@ const work = [
         name: 'FIAB — Finance in a Box',
         period: 'Dec 2024 – Present',
         narrative:
-          'Sole frontend engineer on a month-end checklist SaaS. Rebuilt UI from scratch on a custom Shadcn design system, shipped a multi-level nested table component, and designed a full RBAC system with module and data-level permissions. The investor demo I built raised $100K in seed funding and onboarded the first cohort of 1,000+ users.',
+          'Sole frontend engineer on a month-end checklist SaaS. Rebuilt the UI from scratch on a custom Shadcn design system, shipped a multi-level nested table component, and designed a full RBAC system with module and data-level permissions.',
         stats: [
           {
             num: '$100K',
@@ -39,13 +39,13 @@ const work = [
           },
           {
             num: '~50%',
-            label: 'onboarding error rate cut',
+            label: 'onboarding errors cut',
             detail:
               'Analysed drop-off in the onboarding funnel and rebuilt error states and validation feedback. The onboarding error rate dropped by roughly 50% post-launch.',
           },
           {
             num: '~60%',
-            label: 'feature cycle time cut',
+            label: 'faster feature cycles',
             detail:
               'Introduced component-level design tokens and a shared Shadcn config. The team went from design handoff to shipped feature in roughly half the time compared to before.',
           },
@@ -56,8 +56,15 @@ const work = [
         name: 'Urban Farms — Internal Analytics',
         period: 'Apr – Nov 2024',
         narrative:
-          'Internal dashboard for 500+ farming team members to record and analyse field data from mobile devices. Designed a mobile-first component library on Shadcn/UI — every data-entry flow optimised for gloves-on, one-handed use in the field.',
-        stats: [],
+          'Internal dashboard for farming team members to record and analyse field data from mobile devices. Designed a mobile-first component library on Shadcn/UI — every data-entry flow optimised for gloves-on, one-handed use in the field.',
+        stats: [
+          {
+            num: '500+',
+            label: 'field team members',
+            detail:
+              'Built the internal analytics dashboard used daily by 500+ farming team members across field locations. Every UI decision was driven by the constraint of gloves-on, one-handed mobile use in outdoor conditions.',
+          },
+        ],
         tags: ['React', 'Shadcn/UI', 'Mobile-first', 'Data visualisation'],
       },
     ],
@@ -71,7 +78,7 @@ const work = [
         name: '',
         period: '',
         narrative:
-          'Primary SDE-1 owner of bug triage and feature enhancements on a platform serving 20,000+ users. Resolved 40% of the outstanding backlog and led a full UI revamp that contributed to 1,000+ sign-ups and a 25% registration increase in the first month post-launch. Automated research article publishing end-to-end, replacing a manual JSON workflow with a scheduled cron pipeline.',
+          'Primary SDE-1 owner of bug triage and feature enhancements on a platform serving 20,000+ users. Resolved 40% of the outstanding backlog, led a full UI revamp that drove a 25% registration increase in its first month, and automated research article publishing end-to-end — replacing a manual JSON workflow with a scheduled cron pipeline.',
         stats: [
           {
             num: '20,000+',
@@ -115,7 +122,7 @@ export default function Work() {
         style={{ display: 'flex', flexDirection: 'column', gap: 32 }}
       >
 
-        {/* ── BACK — mobile only, sidebar handles this on desktop ── */}
+        {/* ── BACK ── */}
         <motion.div variants={item}>
           <Link
             href="/"
@@ -132,25 +139,15 @@ export default function Work() {
             <motion.div key={company} variants={item}>
 
               {/* Company header */}
-              <div
-                style={{
-                  paddingBottom: 16,
-                  borderBottom: '1px solid var(--border)',
-                  marginBottom: 28,
-                }}
-              >
-                <div
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'baseline',
-                    gap: '4px 16px',
-                    flexWrap: 'wrap',
-                  }}
-                >
-                  <span style={{ fontWeight: 500, fontSize: 15 }}>
-                    {company}
-                  </span>
+              <div style={{ paddingBottom: 16, borderBottom: '1px solid var(--border)', marginBottom: 28 }}>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'baseline',
+                  gap: '4px 16px',
+                  flexWrap: 'wrap',
+                }}>
+                  <span style={{ fontWeight: 500, fontSize: 15 }}>{company}</span>
                   <span style={{ color: 'var(--subtle)', fontSize: 11, fontFamily: 'var(--mono)', whiteSpace: 'nowrap' }}>
                     {period}
                   </span>
@@ -161,23 +158,19 @@ export default function Work() {
               </div>
 
               {/* Projects */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: 32 }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 36 }}>
                 {projects.map((proj, i) => (
                   <div key={i}>
                     {proj.name && (
-                      <div
-                        style={{
-                          display: 'flex',
-                          justifyContent: 'space-between',
-                          alignItems: 'baseline',
-                          flexWrap: 'wrap',
-                          gap: '2px 12px',
-                          marginBottom: 10,
-                        }}
-                      >
-                        <span style={{ fontWeight: 500, fontSize: 13 }}>
-                          {proj.name}
-                        </span>
+                      <div style={{
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'baseline',
+                        flexWrap: 'wrap',
+                        gap: '2px 12px',
+                        marginBottom: 16,
+                      }}>
+                        <span style={{ fontWeight: 500, fontSize: 13 }}>{proj.name}</span>
                         {proj.period && (
                           <span style={{ color: 'var(--subtle)', fontSize: 11, fontFamily: 'var(--mono)' }}>
                             {proj.period}
@@ -186,19 +179,14 @@ export default function Work() {
                       </div>
                     )}
 
-                    <p
-                      style={{
-                        color: 'var(--muted)',
-                        fontSize: 14,
-                        lineHeight: 1.8,
-                        marginBottom: proj.stats.length ? 20 : 14,
-                      }}
-                    >
-                      {proj.narrative}
-                    </p>
-
+                    {/* Stats FIRST — hiring managers skim to numbers */}
                     {proj.stats.length > 0 && (
-                      <div style={{ display: 'flex', gap: 32, flexWrap: 'wrap', marginBottom: 14 }}>
+                      <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: `repeat(${Math.min(proj.stats.length, 4)}, 1fr)`,
+                        gap: '12px 16px',
+                        marginBottom: 20,
+                      }}>
                         {proj.stats.map(stat => (
                           <button
                             key={stat.label}
@@ -207,47 +195,56 @@ export default function Work() {
                             style={{
                               background: 'none',
                               border: 'none',
-                              padding: '6px 10px',
-                              margin: '-6px -10px',
+                              padding: '8px 10px',
+                              width: '100%',
                               display: 'flex',
                               flexDirection: 'column',
-                              gap: 2,
+                              gap: 4,
                               textAlign: 'left',
                             }}
                           >
-                            <span
-                              style={{
-                                fontSize: 18,
-                                fontWeight: 600,
-                                color: 'var(--gold)',
-                                letterSpacing: '-0.02em',
-                                lineHeight: 1,
-                                borderBottom: '1.5px dotted rgba(220,38,38,0.35)',
-                              }}
-                            >
+                            <span style={{
+                              fontSize: 18,
+                              fontWeight: 600,
+                              color: 'var(--gold)',
+                              letterSpacing: '-0.02em',
+                              lineHeight: 1,
+                              borderBottom: '1.5px dotted rgba(220,38,38,0.35)',
+                              paddingBottom: 3,
+                              display: 'block',
+                            }}>
                               {stat.num}
                             </span>
-                            <span style={{ fontSize: 12, color: 'var(--muted)' }}>{stat.label}</span>
+                            <span style={{ fontSize: 11, color: 'var(--muted)', lineHeight: 1.4 }}>
+                              {stat.label}
+                            </span>
                           </button>
                         ))}
                       </div>
                     )}
 
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginTop: proj.stats.length ? 8 : 0 }}>
+                    {/* Narrative AFTER stats — context for the numbers */}
+                    <p style={{
+                      color: 'var(--muted)',
+                      fontSize: 14,
+                      lineHeight: 1.8,
+                      marginBottom: 16,
+                    }}>
+                      {proj.narrative}
+                    </p>
+
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 6 }}>
                       {proj.tags.map(tag => (
-                        <span
-                          key={tag}
-                          style={{
-                            fontSize: 10,
-                            fontWeight: 600,
-                            letterSpacing: '0.08em',
-                            textTransform: 'uppercase',
-                            padding: '3px 8px',
-                            border: '1px solid var(--border)',
-                            color: 'var(--subtle)',
-                            borderRadius: 3,
-                          }}
-                        >
+                        <span key={tag} style={{
+                          fontSize: 10,
+                          fontWeight: 600,
+                          letterSpacing: '0.08em',
+                          textTransform: 'uppercase',
+                          padding: '3px 8px',
+                          border: '1px solid var(--border)',
+                          color: 'var(--subtle)',
+                          borderRadius: 3,
+                        }}>
                           {tag}
                         </span>
                       ))}
