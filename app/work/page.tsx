@@ -179,24 +179,21 @@ export default function Work() {
                       </div>
                     )}
 
-                    {/* Stats FIRST — hiring managers skim to numbers */}
+                    {/* Stats FIRST — compact fixed-width cards, equal gaps, bordered */}
                     {proj.stats.length > 0 && (
-                      <div style={{
-                        display: 'grid',
-                        gridTemplateColumns: `repeat(${Math.min(proj.stats.length, 4)}, 1fr)`,
-                        gap: '12px 16px',
-                        marginBottom: 20,
-                      }}>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 10, marginBottom: 20 }}>
                         {proj.stats.map(stat => (
                           <button
                             key={stat.label}
                             onClick={() => setOpenMetric(stat)}
                             className="hi"
                             style={{
+                              flex: '0 0 auto',
+                              width: 110,
                               background: 'none',
-                              border: 'none',
-                              padding: '8px 10px',
-                              width: '100%',
+                              border: '1px solid var(--border)',
+                              borderRadius: 6,
+                              padding: '10px 12px',
                               display: 'flex',
                               flexDirection: 'column',
                               gap: 4,
@@ -209,9 +206,6 @@ export default function Work() {
                               color: 'var(--gold)',
                               letterSpacing: '-0.02em',
                               lineHeight: 1,
-                              borderBottom: '1.5px dotted rgba(220,38,38,0.35)',
-                              paddingBottom: 3,
-                              display: 'block',
                             }}>
                               {stat.num}
                             </span>

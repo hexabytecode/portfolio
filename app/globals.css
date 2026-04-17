@@ -125,6 +125,7 @@ a {
   .hi:hover {
     background-color: #DC2626 !important;
     color: #ffffff !important;
+    border-color: rgba(255,255,255,0.35) !important;
   }
   .hi:hover * {
     color: #ffffff !important;

@@ -93,22 +93,20 @@ export default function Home() {
             compound: architecture, design systems, and code that teams can actually own.
           </motion.p>
 
-          {/* ── Highlights — equal-width grid so every card is the same size ── */}
-          <motion.div variants={item} style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '20px 16px',
-          }}>
+          {/* ── Highlights — compact fixed-width cards, equal gaps, bordered ── */}
+          <motion.div variants={item} style={{ display: 'flex', flexWrap: 'wrap', gap: 10 }}>
             {highlights.map(h => (
               <button
                 key={h.num}
                 onClick={() => setOpenMetric(h)}
                 className="hi"
                 style={{
+                  flex: '0 0 auto',
+                  width: 110,
                   background: 'none',
-                  border: 'none',
-                  padding: '8px 10px',
-                  width: '100%',
+                  border: '1px solid var(--border)',
+                  borderRadius: 6,
+                  padding: '10px 12px',
                   display: 'flex',
                   flexDirection: 'column',
                   gap: 6,
@@ -116,14 +114,11 @@ export default function Home() {
                 }}
               >
                 <span style={{
-                  fontSize: 'clamp(20px, 4vw, 28px)',
+                  fontSize: 'clamp(18px, 4vw, 24px)',
                   fontWeight: 600,
                   color: 'var(--gold)',
                   letterSpacing: '-0.03em',
                   lineHeight: 1,
-                  borderBottom: '1.5px dotted rgba(220,38,38,0.35)',
-                  paddingBottom: 4,
-                  display: 'block',
                 }}>
                   {h.num}
                 </span>
